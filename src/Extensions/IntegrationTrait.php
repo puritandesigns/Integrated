@@ -160,7 +160,7 @@ trait IntegrationTrait
     public function notSee($text)
     {
         return $this->assertSee($text, sprintf(
-            "Could not find '%s' on the page, '%s'.", $text, $this->currentPage
+            "Found '%s' on the page, '%s'.", $text, $this->currentPage
         ), true);
     }
 
