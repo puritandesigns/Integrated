@@ -6,11 +6,12 @@ use BadMethodCallException;
 use InvalidArgumentException;
 use Laracasts\Integrated\Str;
 use Laracasts\Integrated\File;
+use Symfony\Component\DomCrawler\Crawler as DomCrawler;
 use Symfony\Component\DomCrawler\Form;
 use Laracasts\Integrated\AnnotationReader;
 use Laracasts\Integrated\IntegratedException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
-use PHPUnit_Framework_ExpectationFailedException as PHPUnitException;
+use PHPUnit\Framework\ExpectationFailedException as PHPUnitException;
 
 trait IntegrationTrait
 {
