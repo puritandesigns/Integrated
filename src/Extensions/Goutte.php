@@ -72,7 +72,7 @@ abstract class Goutte extends TestCase implements Emulator
     {
         $this->crawler = $this->client()->request('GET', $uri);
 
-        $this->clearInputs()->assertPageLoaded($uri);
+        $this->clearInputs();
 
         return $this;
     }
