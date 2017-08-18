@@ -118,17 +118,26 @@ trait IntegrationTrait
      * @param  string  $text
      * @param  string  $message
      * @param  boolean $negate
+     * @param  boolean $insensitive
      * @return static
-     * @throws PHPUnitException
+     * @throws \PHPUnit\Runner\Exception
      */
-    protected function assertSee($text, $message, $negate = false)
-    {
+    protected function assertSee(
+        $text,
+        $message,
+        $negate = false,
+        $insensitive = true
+    ) {
         try {
             $text = preg_quote($text, '/');
             $method = $negate ? 'assertNotRegExp' : 'assertRegExp';
 
-            $this->$method("/{$text}/i", $this->response(), $message);
-        } catch (PHPUnitException $e) {
+            if ($insensitive) {
+                $this->$method("/{$text}/i", $this->response(), $message);
+            } else {
+                $this->$method("/{$text}/", $this->response(), $message);
+            }
+        } catch (\PHPUnit\Runner\Exception $e) {
             $this->logLatestContent();
 
             throw $e;
